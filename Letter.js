@@ -3,14 +3,16 @@ function Letter (char) {
     this.isRevealed = false;
     this.returnLetter = function() {
         if (this.isRevealed) {
-            return. this.char
+            return this.char
         } else {
             return '_';
         }
     }
     this.checkLetter = function(checkChar) {
-        if (checkChar.toLowerCase() = this.char) {
+        if (checkChar.toLowerCase() === this.char) {
             this.isRevealed = true;
         }
     }
 }
+
+module.exports = Letter;
