@@ -17,10 +17,17 @@ function Word () {
         return w.trim();
     }
     this.guessLetter = function(guess) {
+        let returnVal = 'incorrect';
         for (let i = 0; i < this.maskedWord.length; i++) {
-            this.maskedWord[i].checkLetter(guess);
+            let letterVal = this.maskedWord[i].checkLetter(guess);
+            if (returnVal === 'incorrect' && (letterVal === 'correct' || letterVal === 'duplicate')) {
+                returnVal = letterVal;
+            }
         }
+        return returnVal
     }
+}
+module.exports = Word;
 
 /*
 // test

@@ -9,9 +9,18 @@ function Letter (char) {
         }
     }
     this.checkLetter = function(checkChar) {
+        let returnVal = ''; // returns result of guess: 'correct', 'incorrect' or 'duplicate';
         if (checkChar.toLowerCase() === this.char) {
-            this.isRevealed = true;
+            if (this.isRevealed) {
+                returnVal = 'duplicate';
+            } else {
+                this.isRevealed = true;
+                returnVal = 'correct';
+            }
+        } else {
+            returnVal = 'incorrect';
         }
+        return returnVal;
     }
 }
 
