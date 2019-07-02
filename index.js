@@ -5,9 +5,10 @@
 
   * Prompts the user for each guess and keeps track of the user's remaining guesses
   */
-Word = require('./Word.js');
+var Word = require('./Word.js');
+var inquirer = require('inquirer');
 
-possibleWords = ['parralel'];  // array of words to choose from
+possibleWords = ['parallel'];  // array of words to choose from
 var currentWord = new Word();
 
 /** Randomly selects a word and initializes it
@@ -28,25 +29,58 @@ function selectWord () {
 numGuesses = 10; // starting numbner of guesses
 guessedLetters = [];
 
-if (numGuesses > 0) {
-    // keep playing
-
-    // ask for a letter
-
-    // check the letter
-    // is the letter a letter (not a number or symbol)
-
-    // cases: 1 unsolved (repeat of a guess)
-    // cases: 2 unsolved (reduce guesses by 1)
-    // cases: 3 solved
-    // cases: 4 out of guesses
-
-} else {
-    // you're done!
-
+function playGame() {
+    if (numGuesses > 0) {
+        console.log(currentWord.displayWord());
+        console.log(`You have ${numGuesses} guesses remaining.`)
+        inquirer
+            .prompt ([
+                {
+                    type: 'input',
+                    name: 'letterGuess',
+                    validate: function(x) {
+                        if (/^[a-z]{1}$/i.test(x)) {
+                            return true
+                        } else {
+                            return 'Must enter a single letter'
+                        }
+                    }
+                }
+            ])
+            .then ( (r) => {
+                let guessResult = currentWord.guessLetter(r.letterGuess);
+                switch (guessResult) {
+                    case 'correct':
+                        console.log (`Your guess was ${guessResult}`);
+                        break;
+                    case 'duplicate':
+                        console.log (`Your guess was ${guessResult}`);
+                        break;
+                    case 'incorrect':
+                        console.log (`Your guess was ${guessResult}`);
+                        numGuesses--;
+                        break;
+                    case 'solved':
+                        console.log('You solved the puzzle!');
+                        console.log(currentWord.displayWord());
+                        break;
+                    default:
+                        console.log('unhandled result');
+                        break;
+                }
+                playGame();
+            });
+    } else {
+        // you're done!
+        console.log('You lose!  You have no guesses remaining.');
+    }    
 }
 
 
+selectWord();
+playGame();
+
+/*
 let testWord = process.argv[2];
 if (testWord.length > 0) {
     myWord = new Word();
@@ -58,4 +92,4 @@ if (testWord.length > 0) {
     console.log('R:',  myWord.guessLetter('R'), myWord.displayWord());
     console.log('m:',  myWord.guessLetter('m'), myWord.displayWord());
 }
- 
+ */
