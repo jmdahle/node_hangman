@@ -7,6 +7,8 @@ Node_hangman chooses a word at random from its dictionary and the user guesses l
 
 Following a correct guess, node_hangman will reveal the location of the correct letters guessed.  After solving the puzzle, the user can choose to play again with a new word.  If all words from the dictionary have been used, the program notifies the user and end the game.
 
+[View the Video](https://drive.google.com/file/d/1k2y7qerTk4XV6zCHzEFGBWXGLlP4P-rl/view)
+
 ## Installation
 Node_hangman relies on node.js and the _inquirer_ package that can be installed using the node package manager (npm).
 
