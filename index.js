@@ -32,7 +32,9 @@ function selectWord () {
 }
 
 
-
+/** Core game functionality
+ * 
+ */
 function playGame() {
     if (numGuesses > 0 && !gameSolved) {
         console.log('\n\n');
@@ -91,6 +93,9 @@ function playGame() {
     }    
 }
 
+/** Displays wins and losses, restarts is user wants to continue
+ * 
+ */
 function endGame () {
     console.log (`You have ${numWins} wins and ${numLosses} losses.\n`);
     inquirer

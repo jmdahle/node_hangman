@@ -23,4 +23,4 @@ Start the node_hangman game by navigating the terminal to the node_hangman direc
 * If the game runs out of words, it will alert the user and end the game.
 
 ## Resources
-* Code for liri.js is found at [GitHub](https://github.com/jmdahle/node_hangman)
+* Code for node_hangman is found at [GitHub](https://github.com/jmdahle/node_hangman)
