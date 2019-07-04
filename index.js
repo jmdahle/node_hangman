@@ -1,25 +1,19 @@
-/*
-* **index.js**: The file containing the logic for the course of the game, which depends on `Word.js` and:
 
-  * Randomly selects a word and uses the `Word` constructor to store it
-
-  * Prompts the user for each guess and keeps track of the user's remaining guesses
-  */
 var Word = require('./Word.js');
 var inquirer = require('inquirer');
 var possibleWords = require('./Dictionary.js');  // array of words to choose from
 
-var numWins = 0;
-var numLosses = 0;
+var numWins = 0; // accumualtion of wins
+var numLosses = 0; // accumualtion of losses
 const maxGuesses = 6; // starting number of guesses
-var numGuesses = 0;
-var gameSolved = false;
+var numGuesses = 0; // counter for number of guesses remaining
+var gameSolved = false; // flag for game solution
 
-var currentWord = new Word();
+var currentWord = new Word(); // uses word constructor to create word puzzle
 
 selectWord();
 
-/** Randomly selects a word and initializes it
+/** Randomly selects a word from the Dictionary and initializes it
  * 
  */
 function selectWord () {
@@ -114,18 +108,3 @@ function endGame () {
     });
 
 }
-
-
-/*
-let testWord = process.argv[2];
-if (testWord.length > 0) {
-    myWord = new Word();
-    myWord.initialize(testWord);
-//    console.log(testWord, myWord);
-    console.log(myWord.displayWord());
-    console.log('b:', myWord.guessLetter('b'), myWord.displayWord());
-    console.log('m:',  myWord.guessLetter('m'), myWord.displayWord());
-    console.log('R:',  myWord.guessLetter('R'), myWord.displayWord());
-    console.log('m:',  myWord.guessLetter('m'), myWord.displayWord());
-}
- */

@@ -48,21 +48,3 @@ function Word () {
     }
 }
 module.exports = Word;
-
-/*
-// test
-let testWord = process.argv[2];
-if (testWord.length > 0) {
-    myWord = new Word();
-    myWord.initialize(testWord);
-//    console.log(testWord, myWord);
-    console.log(myWord.displayWord());
-    myWord.guessLetter('b');
-    console.log('b:', myWord.displayWord());
-    myWord.guessLetter('m');
-    console.log('m:', myWord.displayWord());
-    myWord.guessLetter('R');
-    console.log('R:', myWord.displayWord());
-
-}
-*/

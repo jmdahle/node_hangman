@@ -4,7 +4,11 @@ var Dictionary = [
 	'hexagon',
 	'circle',
 	'pentagon',
-	'triangle'
+	'triangle',
+	'parallel',
+	'octogon',
+	'perpendicular',
+	'trapezoid'
 	];
 
 module.exports = Dictionary;
