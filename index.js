@@ -7,14 +7,14 @@
   */
 var Word = require('./Word.js');
 var inquirer = require('inquirer');
+var possibleWords = require('./Dictionary.js');  // array of words to choose from
 
 var numWins = 0;
 var numLosses = 0;
 const maxGuesses = 6; // starting number of guesses
 var numGuesses = 0;
 var gameSolved = false;
-var guessedLetters = [];
-var possibleWords = ['square', 'rhombus', 'hexagon', 'circle'];  // array of words to choose from
+
 var currentWord = new Word();
 
 selectWord();
@@ -41,7 +41,7 @@ function selectWord () {
 
 function playGame() {
     if (numGuesses > 0 && !gameSolved) {
-        console.log('----------\n');
+        console.log('\n\n');
         console.log(currentWord.displayWord());
         console.log('\n');
         console.log(`You have ${numGuesses} guesses remaining.`)
@@ -64,19 +64,18 @@ function playGame() {
                 let guessResult = currentWord.guessLetter(r.letterGuess);
                 switch (guessResult) {
                     case 'correct':
-                        console.log (`Your guess was ${guessResult}`);
+                        console.log (`\nYour guess was ${guessResult}`);
                         break;
                     case 'duplicate':
-                        console.log (`Your guess was a ${guessResult}`);
+                        console.log (`\nYour guess was a ${guessResult}`);
                         break;
                     case 'incorrect':
-                        console.log (`Your guess was ${guessResult}`);
+                        console.log (`\nYour guess was ${guessResult}`);
                         numGuesses--;
                         break;
                     case 'solved':
                         numWins++;
-                        console.log('You solved the puzzle!');
-                        console.log(currentWord.displayWord());
+                        console.log('\nYou solved the puzzle!\n');
                         gameSolved = true;
                         break;
                     default:
@@ -87,8 +86,9 @@ function playGame() {
             });
     } else {
         // you're done!
+        console.log(`The word was ${currentWord.displaySolved()}`)
         if (gameSolved) {
-            console.log('You won!')
+            console.log('You won!\n')
         } else {
             numLosses++;
             console.log('You lose!  You have no guesses remaining.');
@@ -98,7 +98,7 @@ function playGame() {
 }
 
 function endGame () {
-    console.log (`You have ${numWins} wins and ${numLosses} losses.`);
+    console.log (`You have ${numWins} wins and ${numLosses} losses.\n`);
     inquirer
     .prompt ([
         {

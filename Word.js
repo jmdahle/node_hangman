@@ -17,6 +17,13 @@ function Word () {
         }
         return w.trim();
     }
+    this.displaySolved = function() {
+        let w = ''; // string that will be displayed
+        for (let i = 0; i < this.maskedWord.length; i++) {
+            w += this.maskedWord[i].char;
+        }
+        return w.trim();
+    }
     this.guessLetter = function(guess) {
         let returnVal = 'incorrect';
         if (this.guessedLetters.indexOf(guess) > 0) {
